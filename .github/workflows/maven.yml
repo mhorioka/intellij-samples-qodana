@@ -24,3 +24,20 @@ jobs:
         run: mvn -B verify --file java-samples/pom.xml
       - name: Build Kotlin examples with Maven
         run: mvn -B verify --file kotlin-samples/pom.xml
+
+  qodana:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: 'Qodana Scan'
+        uses: JetBrains/qodana-action@v2023.2
+        with:
+          pr-mode: false
+          args: |
+            --project-dir,java-samples
+          artifact-name: qodana-jvm
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
+
