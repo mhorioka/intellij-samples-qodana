@@ -1,0 +1,23 @@
+name: Qodana
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  qodana:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: 'Use qodana-backend config'
+        run: cp qodana-jvm.yaml qodana.yaml
+      - name: 'Qodana Scan'
+        uses: JetBrains/qodana-action@v2023.3
+        with:
+          artifact-name: qodana-jvm
+        env:
+          QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
