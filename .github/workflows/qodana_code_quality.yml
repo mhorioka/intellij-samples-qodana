@@ -16,7 +16,7 @@ jobs:
       - name: 'Use qodana-backend config'
         run: cp qodana-jvm.yaml qodana.yaml
       - name: 'Qodana Scan'
-        uses: JetBrains/qodana-action@v2023.3
+        uses: JetBrains/qodana-action@v2023.2
         with:
           artifact-name: qodana-jvm
         env:
