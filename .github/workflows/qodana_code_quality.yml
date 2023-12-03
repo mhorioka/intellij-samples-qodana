@@ -17,9 +17,9 @@ jobs:
         run: cp qodana-jvm.yaml qodana.yaml
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2023.2
-        args:
-          --source-directory,java-samples
         with:
+          args: |
+            --source-directory,java-samples
           artifact-name: qodana-jvm
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
