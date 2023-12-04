@@ -35,7 +35,7 @@ jobs:
         uses: JetBrains/qodana-action@v2023.2
         with:
           args: |
-            --project-dir,java-samples
+            --source-directory,java-samples
           artifact-name: qodana-java-samples
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
