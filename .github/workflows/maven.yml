@@ -34,10 +34,9 @@ jobs:
       - name: 'Qodana Scan'
         uses: JetBrains/qodana-action@v2023.2
         with:
-#          pr-mode: false
           args: |
             --project-dir,java-samples
-          artifact-name: qodana-jvm
+          artifact-name: qodana-java-samples
         env:
           QODANA_TOKEN: ${{ secrets.QODANA_TOKEN }}
 
